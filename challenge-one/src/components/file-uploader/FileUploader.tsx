@@ -30,6 +30,9 @@ export default function FileUploader({
 }: UploadFileProps) {
   const { getRootProps, getInputProps, isDragActive, isDragReject } =
     useDropzone({
+      accept: {
+        "application/pdf": [".pdf"],
+      },
       // Disable click and keydown behavior
       noClick: true,
       noKeyboard: true,
@@ -37,7 +40,7 @@ export default function FileUploader({
     });
 
   return (
-    <Box sx={{}}>
+    <Stack sx={{}}>
       <DropZoneStyle
         {...getRootProps()}
         sx={{
@@ -54,17 +57,27 @@ export default function FileUploader({
           {isDragActive ? (
             <Typography>Drop the files here ...</Typography>
           ) : (
-            <Stack spacing={4}>
+            <Stack spacing={4} alignItems='center'>
               <Stack alignItems='center' spacing={1}>
-                <Icon icon='clarity:upload-cloud-line' width='50' height='50' />
-                <Typography>Drag and drop some files here </Typography>
+                <Icon
+                  icon='charm:upload'
+                  width='50'
+                  height='50'
+                  style={{ opacity: "25%" }}
+                />
+                <Typography>Drag and drop a pdf file here </Typography>
               </Stack>
-              <Button variant='contained'>Browse Files</Button>
+              <Stack spacing={1}>
+                <Button variant='contained'>Browse Files</Button>
+                <Typography variant='caption' color='text.secondary'>
+                  Maximum Size: 10MB
+                </Typography>
+              </Stack>
             </Stack>
           )}
         </Stack>
       </DropZoneStyle>
-    </Box>
+    </Stack>
   );
 }
 
