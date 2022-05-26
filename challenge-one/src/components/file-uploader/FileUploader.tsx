@@ -58,7 +58,7 @@ export default function FileUploader({
       "application/pdf": [".pdf"],
     },
     multiple: false,
-    maxSize: Math.pow(MAX_FILE_SIZE, 6),
+    maxSize: Math.pow(MAX_FILE_SIZE, 7),
     onDrop(acceptedFiles, fileRejections, _) {
       setError(false);
 
@@ -67,6 +67,7 @@ export default function FileUploader({
         file.errors.forEach((err) => {
           switch (err.code) {
             case "file-too-large":
+              console.log(file);
               setError(true);
               console.log(err.message);
               break;
