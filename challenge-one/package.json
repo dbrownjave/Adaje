@@ -5,11 +5,15 @@
   "dependencies": {
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
+    "@iconify/react": "^3.2.2",
     "@mui/material": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "iconify": "^1.4.0",
     "react": "latest",
     "react-dom": "latest",
+    "react-dropzone": "^14.2.1",
+    "react-hook-form": "^7.31.2",
     "react-scripts": "latest",
     "typescript": "latest"
   },
