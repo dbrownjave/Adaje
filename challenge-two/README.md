@@ -1,4 +1,4 @@
-## Adajade - Challenge #1
+## Adajade Challenge #1
 
 #### Instructions
 
@@ -9,16 +9,10 @@ npm start
 
 #### Description
 
-Build an application that, on initialization makes a (mock) call out to a server that returns a random number between 1 and 900. As long as the number is even, the call should be made again but with an increasing delay between calls.
-Upon receipt of an odd number, the app should set the color of a button as follows:
+Build an application that allows a user to click a button to select a local file which is then staged for upload. The file must be of type PDF and no larger than 10MB. Warn the user if either requirement is violated. Every successfully staged file should have its name and size properties displayed on the page. Next to the properties should exist a delete button that removes that file from the list.
+Add a “save” button that makes a mock server call. After save is clicked, display a success message and clear the staged file list. You do not need to write any code for actually saving the files to any repository.
 
-• Green if the number is in the interval [1,300)
-• Red if the number is in the interval [300,600)
-• Blue if the number is in the interval [600,900]
+### Roadmap
 
-When the button is clicked, the following should happen:
-• A string (the current color of the button) should be added to a list (displayed below the
-button).
-
-• A call should be made to the same mock endpoint to reset the color of the button based
-on the logic above
+- Show preview of pdf
+- Uploaded multiple files
