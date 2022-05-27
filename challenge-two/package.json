@@ -5,9 +5,12 @@
   "dependencies": {
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
+    "@iconify/react": "^3.2.2",
     "@mui/material": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "axios": "^0.27.2",
+    "iconify": "^1.4.0",
     "react": "latest",
     "react-dom": "latest",
     "react-scripts": "latest",
@@ -30,5 +33,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "miragejs": "^0.1.44"
   }
 }

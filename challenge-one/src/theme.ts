@@ -11,28 +11,48 @@ import { red } from "@mui/material/colors";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#556cd6",
+      main: "#F15F34",
     },
     secondary: {
-      main: "#19857b",
+      main: "#1A224E",
     },
-    error: {
-      main: red.A400,
+    background: {
+      default: "#F5F5F7",
+    },
+  },
+  components: {
+    MuiIconButton: {
+      defaultProps: {
+        color: "inherit",
+        disableRipple: true,
+      },
+      styleOverrides: {
+        root: {
+          padding: "12px",
+        },
+      },
+    },
+    MuiButton: {
+      defaultProps: {
+        variant: "contained",
+        color: "primary",
+        disableRipple: true,
+      },
+      styleOverrides: {
+        root: {
+          textTransform: "none",
+          height: "40px",
+          fontWeight: 600,
+          borderRadius: 99,
+          boxShadow: "none !important",
+          fontSize: "14px",
+        },
+        fullWidth: {
+          maxWidth: "300px",
+        },
+      },
     },
   },
 });
-
-// export default function ThemeProvider({ children }) {
-//   return (
-//     <MuiThemeProvider theme={theme}>
-//       {/* Inject emotion before JSS */}
-//       <StyledEngineProvider injectFirst>
-//         <CssBaseline />
-//         {children}
-//         {/* Your component tree. Now you can override MUI's styles. */}
-//       </StyledEngineProvider>
-//     </MuiThemeProvider>
-//   );
-// }
 
 export default theme;

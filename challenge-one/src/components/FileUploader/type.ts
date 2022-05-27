@@ -1,9 +1,7 @@
 import { ReactNode } from "react";
 import { DropzoneOptions } from "react-dropzone";
+import { CustomFile } from "../../types/CustomFile";
 
 export interface UploadFileProps extends DropzoneOptions {
-  files: (File | string)[];
-  onUpload?: VoidFunction;
-  onRemove?: (file: File | string) => void;
-  onRemoveAll?: VoidFunction;
+  onUpload?: (file: CustomFile) => void;
 }

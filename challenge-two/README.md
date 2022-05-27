@@ -1,42 +1,24 @@
-# Create React App example with TypeScript
+## Adajade - Challenge #1
 
-## How to use
-
-Download the example [or clone the repo](https://github.com/mui/material-ui):
-
-<!-- #default-branch-switch -->
-
-```sh
-curl https://codeload.github.com/mui/material-ui/tar.gz/master | tar -xz --strip=2 material-ui-master/examples/create-react-app-with-typescript
-cd create-react-app-with-typescript
-```
-
-Install it and run:
+#### Instructions
 
 ```sh
 npm install
 npm start
 ```
 
-or:
+#### Description
 
-<!-- #default-branch-switch -->
+Build an application that, on initialization makes a (mock) call out to a server that returns a random number between 1 and 900. As long as the number is even, the call should be made again but with an increasing delay between calls.
+Upon receipt of an odd number, the app should set the color of a button as follows:
 
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mui/material-ui/tree/master/examples/create-react-app-with-typescript)
+• Green if the number is in the interval [1,300)
+• Red if the number is in the interval [300,600)
+• Blue if the number is in the interval [600,900]
 
-<!-- #default-branch-switch -->
+When the button is clicked, the following should happen:
+• A string (the current color of the button) should be added to a list (displayed below the
+button).
 
-[![Edit on StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/mui/material-ui/tree/master/examples/create-react-app-with-typescript)
-
-## The idea behind the example
-
-This example demonstrates how you can use [Create React App](https://github.com/facebookincubator/create-react-app) with [TypeScript](https://github.com/Microsoft/TypeScript).
-It includes `@mui/material` and its peer dependencies, including `emotion`, the default style engine in MUI v5.
-If you prefer, you can [use styled-components instead](https://mui.com/material-ui/guides/interoperability/#styled-components).
-
-## What's next?
-
-<!-- #default-branch-switch -->
-
-You now have a working example project.
-You can head back to the documentation, continuing browsing it from the [templates](https://mui.com/material-ui/getting-started/templates/) section.
+• A call should be made to the same mock endpoint to reset the color of the button based
+on the logic above

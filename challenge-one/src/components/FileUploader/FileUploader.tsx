@@ -13,7 +13,8 @@ import { styled } from "@mui/material/styles";
 import { red } from "@mui/material/colors";
 
 import { Box, Stack, Button, Typography } from "@mui/material";
-
+import { CustomFile } from "../../types/CustomFile";
+var bytes = require("bytes");
 // Style Components
 
 const DropZoneStyle = styled("div")(({ theme }) => ({
@@ -37,65 +38,49 @@ const ErrorMessageStyle = styled("div")(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 // file size in
-const MAX_FILE_SIZE = 10;
+const MAX_FILE_SIZE: number = 10;
 
-export default function FileUploader({
-  onUpload,
-  onRemove,
-  onRemoveAll,
-  ...other
-}: UploadFileProps) {
+export default function FileUploader({ onUpload, ...other }: UploadFileProps) {
   // Props
-  const {
-    getRootProps,
-    getInputProps,
-    isDragActive,
-    isDragReject,
-    acceptedFiles,
-    open,
-  } = useDropzone({
-    accept: {
-      "application/pdf": [".pdf"],
-    },
-    multiple: false,
-    maxSize: Math.pow(MAX_FILE_SIZE, 7),
-    onDrop(acceptedFiles, fileRejections, _) {
-      setError(false);
+  const { getRootProps, getInputProps, isDragActive, isDragReject, open } =
+    useDropzone({
+      accept: {
+        "application/pdf": [".pdf"],
+      },
+      multiple: false,
+      maxSize: bytes.parse(`${MAX_FILE_SIZE}MB`),
+      onDrop(acceptedFiles, fileRejections, _) {
+        setError(false);
 
-      // check for errors
-      fileRejections.forEach((file) => {
-        file.errors.forEach((err) => {
-          switch (err.code) {
-            case "file-too-large":
-              console.log(file);
-              setError(true);
-              console.log(err.message);
-              break;
-            case "file-invalid-type":
-              setError(true);
-              console.log(err.message);
-              break;
-          }
+        // check for errors
+        if (fileRejections.length > 0) setError(true);
+
+        // check the type of errors that occurred
+        fileRejections.forEach((file) => {
+          file.errors.forEach((err) => {
+            switch (err.code) {
+              case "file-too-large":
+                break;
+              case "file-invalid-type":
+                break;
+            }
+          });
         });
 
-        // return accepted files
-        console.log(acceptedFiles);
-      });
-    },
-    // Disable click and keydown behavior
-    noClick: true,
-    noKeyboard: true,
-    ...other,
-  });
+        // publish accepted file
+        const acceptedFile: CustomFile = acceptedFiles[0];
+        if (acceptedFile && onUpload) onUpload(acceptedFile);
+      },
+      // Disable click and keydown behavior
+      noClick: true,
+      noKeyboard: true,
+      ...other,
+    });
 
   // States
-  const [error, setError] = useState(false); // set null
+  const [error, setError] = useState<boolean>(false);
 
   // Effects
-  useEffect(() => {
-    console.log("accepted files", acceptedFiles);
-  }, [acceptedFiles]);
-
   useEffect(() => {}, [error]);
 
   // View
